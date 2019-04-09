@@ -1,3 +1,4 @@
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 //  OpenShift sample Node application
 var express = require('express'),
     bodyParser = require('body-parser'),

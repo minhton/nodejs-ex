@@ -141,19 +141,21 @@ app.get('/webhook', function (req, res) {
     }
 });
 
+function firstEntity(nlp, name) {
+    return nlp && nlp.entities && nlp.entities[name] && nlp.entities[name][0];
+}
+
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
     let response;
 
     // Check if the message contains text
-    if (received_message.text) {
-
-        // Create the payload for a basic text message
+    const greeting = firstEntity(received_message.nlp, 'greetings');
+    if (greeting && greeting.confidence > 0.8) {
         response = {
-            "text": `You sent the message: "${received_message.text}". Now send me an image!`
+            "text": `Chào bạn! Cám ơn bạn đã quan tâm đến Ngân hàng sữa mẹ BV Từ Dũ.Bạn vui lòng để lại họ tên, địa chỉ, số dt để được tư vấn trong thời gian sớm nhất. Thân ái!`
         }
     }
-
     // Sends the response message
     callSendAPI(sender_psid, response);
 }

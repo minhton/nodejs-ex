@@ -153,7 +153,7 @@ function handleMessage(sender_psid, received_message) {
     const greeting = firstEntity(received_message.nlp, 'greetings');
     if (greeting && greeting.confidence > 0.8) {
         response = {
-            "text": `Chào bạn! Cám ơn bạn đã quan tâm đến Ngân hàng sữa mẹ BV Từ Dũ.Bạn vui lòng để lại họ tên, địa chỉ, số dt để được tư vấn trong thời gian sớm nhất. Thân ái!`
+            "text": "Chào bạn! Cám ơn bạn đã quan tâm đến Ngân hàng sữa mẹ BV Từ Dũ.Bạn vui lòng để lại họ tên, địa chỉ, số dt để được tư vấn trong thời gian sớm nhất. Thân ái!"
         }
     }
     // Sends the response message
@@ -174,7 +174,7 @@ function callSendAPI(sender_psid, response) {
         },
         "message": response
     }
-
+    console.log("PAGE_ACCESS_TOKEN:"+PAGE_ACCESS_TOKEN)
     // Send the HTTP request to the Messenger Platform
     request({
         "uri": "https://graph.facebook.com/v2.6/me/messages",

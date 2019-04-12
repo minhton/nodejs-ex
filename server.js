@@ -152,10 +152,10 @@ function handleMessage(sender_psid, received_message) {
     // Check if the message contains text
     const greeting = firstEntity(received_message.nlp, 'greetings');
     if ((greeting && greeting.confidence > 0.8)
-        || received_message.text.indexOf("hi") > -1
-        || received_message.text.indexOf("Chào") > -1
-        || received_message.text.indexOf("Chao") > -1
-        || received_message.text.indexOf("hello") > -1) {
+        || received_message.text.toLowerCase().indexOf("hi") > -1
+        || received_message.text.toLowerCase().indexOf("chào") > -1
+        || received_message.text.toLowerCase().indexOf("chao") > -1
+        || received_message.text.toLowerCase().indexOf("hello") > -1) {
         response = {
             "text": "Chào bạn! Cám ơn bạn đã quan tâm đến Ngân hàng sữa mẹ BV Từ Dũ.Bạn vui lòng để lại họ tên, địa chỉ, số dt để được tư vấn trong thời gian sớm nhất. Thân ái!"
         }

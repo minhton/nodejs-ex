@@ -158,9 +158,10 @@ function handleMessage(sender_psid, received_message) {
         response = {
             "text": "Chào bạn! Cám ơn bạn đã quan tâm đến Ngân hàng sữa mẹ BV Từ Dũ.Bạn vui lòng để lại họ tên, địa chỉ, số dt để được tư vấn trong thời gian sớm nhất. Thân ái!"
         }
+        // Sends the response message
+        callSendAPI(sender_psid, response);
     }
-    // Sends the response message
-    callSendAPI(sender_psid, response);
+    console.log("message is invalid!")
 }
 
 // Handles messaging_postbacks events

@@ -151,6 +151,7 @@ function handleMessage(sender_psid, received_message) {
 
     // Check if the message contains text
     const greeting = firstEntity(received_message.nlp, 'greetings');
+    console.log("greeting: ", greeting)
     if ((greeting && greeting.confidence > 0.8)
         || received_message.text.toLowerCase().indexOf("hi") > -1
         || received_message.text.toLowerCase().indexOf("chào") > -1
@@ -161,8 +162,9 @@ function handleMessage(sender_psid, received_message) {
         }
         // Sends the response message
         callSendAPI(sender_psid, response);
+    } else {
+        console.log("message is invalid!")
     }
-    console.log("message is invalid!")
 }
 
 // Handles messaging_postbacks events
